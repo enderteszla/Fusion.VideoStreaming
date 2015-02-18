@@ -10,11 +10,12 @@ using Fusion.Graphics;
 
 namespace Fusion.VideoStreaming
 {
-	public class Game : Fusion.Game
+	public class GameServer : Fusion.Game
 	{
 		private DateTime nextSnapshotTime;
 		private TimeSpan snapshotPeriod;
 		private Wheel wheel;
+		private StreamingServer streamingServer;
 
 		private struct Wheel
 		{
@@ -43,10 +44,16 @@ namespace Fusion.VideoStreaming
 			}
 		}
 
-		public Game() : base() {
+		public GameServer(StreamingServer streamingServer) : base() {
 			nextSnapshotTime = DateTime.Now;
 			snapshotPeriod = Properties.Settings.Default.snapshotPeriod;
 			wheel = new Wheel(Properties.Settings.Default.wheelLength);
+			this.streamingServer = streamingServer;
+			Exiting += Game_Exiting;
+		}
+
+		private void Game_Exiting(object sender, EventArgs e) {
+			streamingServer.Stop();
 		}
 
 		private void backBufferToBitmap(out Bitmap bitmap)

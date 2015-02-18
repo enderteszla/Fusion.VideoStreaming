@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Fusion;
 using Fusion.Content;
 using Fusion.Graphics;
-using Fusion.Input;
 using Fusion.Mathematics;
 using Fusion.Development;
+using Fusion.Input;
 using Fusion.VideoStreaming;
 
 namespace Minesweeper
 {
-    public class Game : Fusion.VideoStreaming.Game
+    public class Game : GameServer
     {
         /// <summary>
         /// Minesweeper constructor
         /// </summary>
-		public Game() : base() {
+		public Game(StreamingServer streamingServer)
+			: base(streamingServer)
+		{
 			//	enable object tracking :
             Parameters.TrackObjects = true;
 
@@ -81,24 +84,24 @@ namespace Minesweeper
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void InputDevice_KeyDown(object sender, Fusion.Input.InputDevice.KeyEventArgs e)
+		void InputDevice_KeyDown(object sender, InputDevice.KeyEventArgs e)
         {
             if (e.Key == Keys.F1)
             {
                 DevCon.Show(this);
             }
-            
-            if (e.Key == Keys.F5)
+
+			if (e.Key == Keys.F5)
             {
                 Reload();
             }
 
-            if (e.Key == Keys.F12)
+			if (e.Key == Keys.F12)
             {
                 GraphicsDevice.Screenshot();
             }
-            
-            if (e.Key == Keys.Escape)
+
+			if (e.Key == Keys.Escape)
             {
                 Exit();
             }
