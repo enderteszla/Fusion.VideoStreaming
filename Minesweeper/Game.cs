@@ -14,22 +14,13 @@ using Fusion.VideoStreaming;
 
 namespace Minesweeper
 {
-<<<<<<< HEAD
     public class Game : GameServer
-=======
-    public class Game : Game
->>>>>>> 080dd513b1df8cab251832582b935f9a2d303492
     {
         /// <summary>
         /// Minesweeper constructor
         /// </summary>
-<<<<<<< HEAD
 		public Game(StreamingServer streamingServer)
 			: base(streamingServer)
-=======
-		public Game(StreamingServer streamingProcess)
-			: base(streamingProcess)
->>>>>>> 080dd513b1df8cab251832582b935f9a2d303492
 		{
 			//	enable object tracking :
             Parameters.TrackObjects = true;
