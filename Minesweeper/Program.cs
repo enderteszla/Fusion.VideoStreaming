@@ -15,19 +15,16 @@ namespace Minesweeper
 		[STAThread]
 		static void Main(string[] args)
 		{
-			using (var vs = new Fusion.VideoStreaming.StreamingProcess())
-			using (var game = new Game())
+			using (var ss = new StreamingServer())
+			using (var game = new Game(ss))
 			{
 				if (Fusion.Development.DevCon.Prepare(game, @"..\..\..\Content\Content.xml", "Content"))
 				{
 					new Thread(() =>
 					{
-						game.Run(args);
+						ss.Assign(game).Start();
 					}).Start();
-					new Thread(() =>
-					{
-						vs.Start();
-					}).Start();
+					game.Run(args);
 				}
 			}
 		}

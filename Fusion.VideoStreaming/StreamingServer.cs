@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace Fusion.VideoStreaming
 {
-	public class StreamingProcess : IDisposable
+	public class StreamingServer : IDisposable
 	{
 		private String ffmpegPath, frameRate, fakeImageDir, fakeImageName, fakeImageExtension, vlcPath, port, fakeVideoName, fakeVideoExtension, batchFileDir, batchFileName;
 		private Process controlProcess;
+		private GameServer gameServer;
 
-		public StreamingProcess(int frameRate = 0, int port = 0)
+		public StreamingServer(int frameRate = 0, int port = 0)
 		{
 			this.ffmpegPath = Properties.Settings.Default.ffmpegPath;
 			this.frameRate = (frameRate == 0) ? Properties.Settings.Default.fps.ToString() : frameRate.ToString();
@@ -50,6 +51,11 @@ namespace Fusion.VideoStreaming
 			}
 		}
 
+		public StreamingServer Assign(GameServer gameServer) {
+			this.gameServer = gameServer;
+			return this;
+		}
+
 		public void Start() {
 			using (StreamWriter batchFile = new StreamWriter(String.Concat(batchFileDir,batchFileName), false))
 			{
@@ -79,7 +85,7 @@ namespace Fusion.VideoStreaming
 			GC.SuppressFinalize(this);
 		}
 
-		~StreamingProcess() {
+		~StreamingServer() {
 			Dispose(false);
 		}
 

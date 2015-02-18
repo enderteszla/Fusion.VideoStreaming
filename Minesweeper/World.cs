@@ -63,7 +63,7 @@ namespace Minesweeper
             if (f != null) f.bombNeighboursCount++;
         }
 
-        public void InputDevice_KeyDown(object sender, Fusion.Input.InputDevice.KeyEventArgs e)
+        public void InputDevice_KeyDown(object sender, InputDevice.KeyEventArgs e)
         {
             if (e.Key == Keys.F2)
             {
@@ -83,7 +83,7 @@ namespace Minesweeper
             }
         }
         
-        public void InputDevice_KeyUp(object sender, Fusion.Input.InputDevice.KeyEventArgs e) { }
+        public void InputDevice_KeyUp(object sender, InputDevice.KeyEventArgs e) { }
 
         public override void Initialize()
         {
