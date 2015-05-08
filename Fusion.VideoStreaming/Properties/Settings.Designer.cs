@@ -25,8 +25,8 @@ namespace Fusion.VideoStreaming.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\lbezborodov\\Downloads\\ffmpeg-20150204-git-77f326d-win64-shared\\bin\\ffmpe" +
-            "g.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\bezbo_000\\Downloads\\ffmpeg-20150204-git-77f326d-win64-shared\\bin\\ffmpeg." +
+            "exe")]
         public string ffmpegPath {
             get {
                 return ((string)(this["ffmpegPath"]));
@@ -44,7 +44,7 @@ namespace Fusion.VideoStreaming.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\lbezborodov\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\bezbo_000\\Pictures\\")]
         public string fakeImageDir {
             get {
                 return ((string)(this["fakeImageDir"]));
@@ -107,7 +107,7 @@ namespace Fusion.VideoStreaming.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\lbezborodov\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\bezbo_000\\Documents\\")]
         public string batchFileDir {
             get {
                 return ((string)(this["batchFileDir"]));

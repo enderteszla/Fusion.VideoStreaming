@@ -33,6 +33,7 @@ namespace Minesweeper
             AddService(new SpriteBatch(this), false, false, 0, 0);
             AddService(new DebugStrings(this), true, true, 9999, 9999);
             AddService(new DebugRender(this), true, true, 9998, 9998);
+            AddService(new Camera(this), true, false, 1, 1);
 
             //	add here additional services :
             AddService(new World(this), true, true, 500, 500);
