@@ -1,0 +1,14 @@
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Test.exe.config
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Test.exe
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Test.pdb
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.Diagnostics.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.Host.HttpListener.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.Hosting.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Owin.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.xml
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.Diagnostics.xml
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.Host.HttpListener.xml
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\bin\Debug\Microsoft.Owin.Hosting.xml
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\obj\Debug\Test.exe
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Test\obj\Debug\Test.pdb

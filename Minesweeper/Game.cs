@@ -6,21 +6,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using Fusion;
 using Fusion.Content;
-using Fusion.Graphics;
-using Fusion.Mathematics;
 using Fusion.Development;
+using Fusion.Graphics;
 using Fusion.Input;
+using Fusion.Mathematics;
 using Fusion.VideoStreaming;
 
 namespace Minesweeper
 {
-    public class Game : GameServer
+	public class Game : GameServer
     {
         /// <summary>
         /// Minesweeper constructor
         /// </summary>
-		public Game(StreamingServer streamingServer)
-			: base(streamingServer)
+		public Game() : base()
 		{
 			//	enable object tracking :
             Parameters.TrackObjects = true;
@@ -33,7 +32,6 @@ namespace Minesweeper
             AddService(new SpriteBatch(this), false, false, 0, 0);
             AddService(new DebugStrings(this), true, true, 9999, 9999);
             AddService(new DebugRender(this), true, true, 9998, 9998);
-            AddService(new Camera(this), true, false, 1, 1);
 
             //	add here additional services :
             AddService(new World(this), true, true, 500, 500);
@@ -90,7 +88,7 @@ namespace Minesweeper
             if (e.Key == Keys.F1)
             {
                 DevCon.Show(this);
-            }
+			}
 
 			if (e.Key == Keys.F5)
             {

@@ -1,0 +1,5 @@
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\Fusion.VideoStreaming.GameServer.dll.config
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\Fusion.VideoStreaming.GameServer.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\Fusion.VideoStreaming.GameServer.pdb
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Fusion.VideoStreaming.GameServer\obj\Release\Fusion.VideoStreaming.GameServer.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Fusion.VideoStreaming.GameServer\obj\Release\Fusion.VideoStreaming.GameServer.pdb
