@@ -19,7 +19,7 @@ namespace Fusion.VideoStreaming
             Stream responseBody = environment["owin.ResponseBody"] as Stream;
             using (StreamWriter responseWriter = new StreamWriter(responseBody))
             {
-                StreamReader r = new StreamReader(@".\Content\index.html");
+                StreamReader r = new StreamReader(@"..\Content\index.html");
                 string fileContent = r.ReadToEnd();
                 r.Close();
                 return responseWriter.WriteAsync(fileContent);

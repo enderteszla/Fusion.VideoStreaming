@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fusion.VideoStreaming
 {
-    internal struct Wheel
+    internal class Wheel : IDisposable
     {
         private String[] FileNames;
         private int c;
@@ -30,6 +30,17 @@ namespace Fusion.VideoStreaming
         public String Current()
         {
             return FileNames[c];
+        }
+
+        public void Dispose() {
+            Dispose(true);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+            }
         }
     }
 }

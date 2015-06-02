@@ -53,6 +53,18 @@ namespace Fusion.VideoStreaming
 		public void Start()
 		{
 			// ... Generate necessary number of empty images.
+            using (var Wheel = new Wheel(Properties.Settings.Default.wheelLength))
+            {
+                for (var i = 0; i < Properties.Settings.Default.wheelLength; i++)
+                {
+                    if (!File.Exists(Wheel.Current()))
+                    {
+                        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), @"..\Content\source.png"), Wheel.Current());
+                    }
+                    Wheel.Next();
+                }
+            }
+
 			using (StreamWriter batchFile = new StreamWriter(String.Concat(batchFileDir,batchFileName), false))
 			{
 				String executionString = String.Format("\"{0}\" -loop 1 -framerate {1} -i \"{2}{3}%%03d.{4}\" -vcodec libx264 -r 60 -pix_fmt yuv420p -f mpegts - | \"{5}\" -I dummy --dummy-quiet - :sout=#transcode{{vcodec=theo,vb=800,acodec=vorb,ab=128,channels=2,samplerate=44100}}:http{{dst=:{6}/{7}.{8}}} :sout-keep vlc://quit", ffmpegPath, frameRate, fakeImageDir, fakeImageName, fakeImageExtension, vlcPath, port, fakeVideoName, fakeVideoExtension);
@@ -68,7 +80,7 @@ namespace Fusion.VideoStreaming
 
 		public void Stop()
 		{
-			if(controlProcess != null)
+			if(controlProcess != null && !controlProcess.HasExited)
 			{
 				controlProcess.CloseMainWindow();
 			}

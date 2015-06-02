@@ -1,4 +1,4 @@
-﻿function EventHandler(CONFIG) { this.CONFIG = CONFIG; }
+﻿/* function EventHandler(CONFIG) { this.CONFIG = CONFIG; }
 EventHandler.prototype.State = { left: false, right: false };
 EventHandler.prototype.CursorPosition = { x: -1, y: -1 };
 EventHandler.prototype.onContextMenu = function (event) {
@@ -60,8 +60,13 @@ $.fn.attachEventHandler = function () {
 		.on('mousedown', Handler.onMouseDown.bind(Handler))
 		.on('mousemove', Handler.onMouseMove.bind(Handler));
 	return this;
-};
+};*/
 
 jQuery(function () {
-	$('#test').attachEventHandler();
+    $('#PlayButton').on('click', function () {
+        $.post('/signal/prepare', {}, function (Response) {
+            $('<video />').prop('src', Response.Endpoint).prop('autoplay','1').replaceAll($(this));
+            console.log(Response.InstanceID);
+        }.bind($(this)), 'json');
+    });
 });

@@ -11,7 +11,7 @@ using Fusion.Mathematics;
 
 namespace Fusion.VideoStreaming
 {
-    class Instance : IDisposable
+    public class Instance : IDisposable
     {
         private volatile dynamic VisualizationServer;
         private volatile StreamingServer StreamingServer;
@@ -22,30 +22,47 @@ namespace Fusion.VideoStreaming
             VisualizationServer = Activator.CreateInstance(VisualizatorName);
         }
 
-        public bool prepare(Keys key, Vector2 mousePosition)
+        public bool Prepare()
         {
             return DevCon.Prepare(VisualizationServer, @"..\Content\Content.xml", "Content");
         }
-        public void start(Keys key, Vector2 mousePosition)
+
+        public void Init() {
+            StreamingServer.Start();
+        }
+
+        public void Start()
         {
-            (new Thread(() =>
-            {
-                StreamingServer.Start();
-            })).Start();
+            // StreamingThread = new Thread(StreamingServer.Start);
+            // StreamingThread.Start();
             VisualizationServer.Run(new string[0]);
         }
-        public void keyUp(Keys key, Vector2 mousePosition)
+        public void KeyUp(string KeyCode,float MouseX,float MouseY)
         {
-            VisualizationServer.keyUp(key, mousePosition);
+            Keys Key;
+            if (Enum.TryParse<Keys>(KeyCode, out Key))
+            {
+                VisualizationServer.keyUp(Key, new Vector2(MouseX, MouseY));
+            }
         }
-        public void keyDown(Keys key, Vector2 mousePosition)
+        public void KeyDown(string KeyCode,float MouseX,float MouseY)
         {
-            VisualizationServer.keyDown(key, mousePosition);
+            Keys Key;
+            if (Enum.TryParse<Keys>(KeyCode, out Key))
+            {
+                VisualizationServer.keyDown(Key, new Vector2(MouseX, MouseY));
+            }
         }
-        public void stop(Keys key, Vector2 mousePosition)
+        public void Stop()
         {
-            StreamingServer.Stop();
-            VisualizationServer.Exit();
+            if (StreamingServer != null)
+            {
+                StreamingServer.Stop();
+            }
+            if (VisualizationServer != null)
+            {
+                VisualizationServer.Exit();
+            }
         }
 
         /*public void fire(GameServerEventType Type, String Key, Vector2 coords = ) {
@@ -59,8 +76,14 @@ namespace Fusion.VideoStreaming
         public void Dispose()
         {
             Dispose(true);
-            VisualizationServer.Dispose();
-            StreamingServer.Dispose();
+            if (VisualizationServer != null)
+            {
+                VisualizationServer.Dispose();
+            }
+            if (StreamingServer != null)
+            {
+                StreamingServer.Dispose();
+            }
             GC.SuppressFinalize(this);
         }
 

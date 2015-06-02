@@ -26,7 +26,7 @@ namespace Fusion.VideoStreaming
             RunWebApiConfiguration(appBuilder);
 
             // Or is it a static file request?
-            appBuilder.UseStaticFiles(new StaticFileOptions() { FileSystem = new PhysicalFileSystem(@".\Content") });
+            appBuilder.UseStaticFiles(new StaticFileOptions() { FileSystem = new PhysicalFileSystem(@"..\Content") });
 
             // Or simply / ?
             appBuilder.UseIndexPage();
@@ -35,8 +35,8 @@ namespace Fusion.VideoStreaming
             HttpConfiguration httpConfiguration = new HttpConfiguration();
             httpConfiguration.Routes.MapHttpRoute(
                 name: "Signal",
-                routeTemplate: "signal/{action}/{Key}/{MouseX}/{MouseY}",
-                defaults: new { controller = "Signal", Key = RouteParameter.Optional, MouseX = RouteParameter.Optional, MouseY = RouteParameter.Optional }
+                routeTemplate: "signal/{action}/{InstanceID}/{Key}/{MouseX}/{MouseY}",
+                defaults: new { controller = "Signal", InstanceID = RouteParameter.Optional, Key = RouteParameter.Optional, MouseX = RouteParameter.Optional, MouseY = RouteParameter.Optional }
                 );
             httpConfiguration.Formatters.Remove(httpConfiguration.Formatters.XmlFormatter);
             Console.WriteLine("Configuration done.");

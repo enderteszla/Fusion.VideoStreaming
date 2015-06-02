@@ -26,7 +26,7 @@ namespace Fusion.VideoStreaming
 			wheel = new Wheel(Properties.Settings.Default.wheelLength);
 		}
 
-		private void backBufferToBitmap(out Bitmap bitmap)
+        private void backBufferToBitmap(out Bitmap bitmap)
 		{
 			RenderTarget2D rt = GraphicsDevice.BackbufferColor;
 			int w = GraphicsDevice.DisplayBounds.Width;
@@ -59,10 +59,10 @@ namespace Fusion.VideoStreaming
 			{
 				Bitmap bmp;
 				backBufferToBitmap(out bmp);
-				bmp.Save(wheel.current(), ImageFormat.Png);
+				bmp.Save(wheel.Current(), ImageFormat.Png);
 				bmp.Dispose();
 				nextSnapshotTime = nextSnapshotTime.Add(snapshotPeriod);
-				wheel.next();
+				wheel.Next();
 			}
 		}
 
@@ -83,5 +83,12 @@ namespace Fusion.VideoStreaming
 				InputDevice.GlobalMouseOffset = mousePosition;
 			}
 		}
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) {
+            }
+            base.Dispose(disposing);
+        }
 	}
 }
