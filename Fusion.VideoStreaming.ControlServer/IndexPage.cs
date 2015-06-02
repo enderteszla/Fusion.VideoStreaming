@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ApplicationFunction = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
-namespace WebApi
+namespace Fusion.VideoStreaming
 {
     class IndexPage
     {

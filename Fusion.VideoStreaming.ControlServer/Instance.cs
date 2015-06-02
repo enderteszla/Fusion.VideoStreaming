@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,22 +11,20 @@ using Fusion.Mathematics;
 
 namespace Fusion.VideoStreaming
 {
-    class Instance<T> : IDisposable where T : GameServer, new()
+    class Instance : IDisposable
     {
-        private volatile T GameServer;
+        private volatile dynamic VisualizationServer;
         private volatile StreamingServer StreamingServer;
-        private string[] Args;
 
-        public Instance()
+        public Instance(Type VisualizatorName)
         {
             StreamingServer = new StreamingServer();
-            GameServer = new T();
-            Args = new string[0];
+            VisualizationServer = Activator.CreateInstance(VisualizatorName);
         }
 
         public bool prepare(Keys key, Vector2 mousePosition)
         {
-            return DevCon.Prepare(GameServer, @"..\Content\Content.xml", "Content");
+            return DevCon.Prepare(VisualizationServer, @"..\Content\Content.xml", "Content");
         }
         public void start(Keys key, Vector2 mousePosition)
         {
@@ -33,20 +32,20 @@ namespace Fusion.VideoStreaming
             {
                 StreamingServer.Start();
             })).Start();
-            GameServer.Run(Args);
+            VisualizationServer.Run(new string[0]);
         }
         public void keyUp(Keys key, Vector2 mousePosition)
         {
-            GameServer.keyUp(key, mousePosition);
+            VisualizationServer.keyUp(key, mousePosition);
         }
         public void keyDown(Keys key, Vector2 mousePosition)
         {
-            GameServer.keyDown(key, mousePosition);
+            VisualizationServer.keyDown(key, mousePosition);
         }
         public void stop(Keys key, Vector2 mousePosition)
         {
             StreamingServer.Stop();
-            GameServer.Exit();
+            VisualizationServer.Exit();
         }
 
         /*public void fire(GameServerEventType Type, String Key, Vector2 coords = ) {
@@ -60,7 +59,7 @@ namespace Fusion.VideoStreaming
         public void Dispose()
         {
             Dispose(true);
-            GameServer.Dispose();
+            VisualizationServer.Dispose();
             StreamingServer.Dispose();
             GC.SuppressFinalize(this);
         }

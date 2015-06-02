@@ -10,11 +10,16 @@ using GraphVis;
 
 namespace Fusion.VideoStreaming
 {
-    class Program
+    class DesktopLauncher
     {
         static void Main(string[] args)
         {
-            using (var cs = new Instance<GraphVis.Game>())
+            /* Instance.init(Type.GetType("GraphVis.Game,GraphVis"));
+            if (Instance.prepare(Keys.F2, Vector2.Zero))
+            {
+                Instance.start(Keys.F2, Vector2.Zero);
+            } */
+            using (var cs = new Instance(Type.GetType("GraphVis.Game,GraphVis")))
             {
                 if(cs.prepare(Keys.F2, Vector2.Zero)){
                     cs.start(Keys.F2, Vector2.Zero);

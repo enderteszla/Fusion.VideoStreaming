@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace WebApi
+namespace Fusion.VideoStreaming
 {
     public class SignalController : ApiController
     {

@@ -12,13 +12,13 @@ using Fusion.Mathematics;
 
 namespace Fusion.VideoStreaming
 {
-	public class GameServer : Fusion.Game
+	public class VisualizationServer : Fusion.Game
 	{
 		private DateTime nextSnapshotTime;
 		private TimeSpan snapshotPeriod;
 		private Wheel wheel;
 
-		public GameServer()
+		public VisualizationServer()
 			: base()
 		{
 			nextSnapshotTime = DateTime.Now;

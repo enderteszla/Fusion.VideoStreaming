@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Owin;
 
-namespace WebApi
+namespace Fusion.VideoStreaming
 {
     public static class AppBuilderExtensions
     {

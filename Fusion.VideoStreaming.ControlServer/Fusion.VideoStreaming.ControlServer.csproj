@@ -32,7 +32,7 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Fusion.VideoStreaming.DesktopLauncher</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fusion, Version=0.9.1.113, Culture=neutral, processorArchitecture=AMD64">
@@ -67,6 +67,7 @@
       <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.0.1\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -100,16 +101,17 @@
     <Compile Include="AppBuilderExtensions.cs" />
     <Compile Include="IndexPage.cs" />
     <Compile Include="Instance.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Desktop.Launcher.cs" />
+    <Compile Include="Web.Launcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalController.cs" />
     <Compile Include="SignalParameters.cs" />
     <Compile Include="Upstart.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fusion.VideoStreaming.GameServer\Fusion.VideoStreaming.GameServer.csproj">
+    <ProjectReference Include="..\Fusion.VideoStreaming.VisualizationServer\Fusion.VideoStreaming.VisualizationServer.csproj">
       <Project>{127f5081-d795-49c7-9b43-e8704869bb0b}</Project>
-      <Name>Fusion.VideoStreaming.GameServer</Name>
+      <Name>Fusion.VideoStreaming.VisualizationServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fusion.VideoStreaming.StreamingServer\Fusion.VideoStreaming.StreamingServer.csproj">
       <Project>{5e2b0e03-3faa-4add-aec4-361cc1b1ac44}</Project>

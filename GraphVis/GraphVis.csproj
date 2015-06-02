@@ -51,9 +51,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fusion.VideoStreaming.GameServer\Fusion.VideoStreaming.GameServer.csproj">
+    <ProjectReference Include="..\Fusion.VideoStreaming.VisualizationServer\Fusion.VideoStreaming.VisualizationServer.csproj">
       <Project>{127f5081-d795-49c7-9b43-e8704869bb0b}</Project>
-      <Name>Fusion.VideoStreaming.GameServer</Name>
+      <Name>Fusion.VideoStreaming.VisualizationServer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

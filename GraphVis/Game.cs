@@ -16,7 +16,7 @@ using System.IO;
 
 namespace GraphVis
 {
-    public class Game : GameServer
+    public class Game : VisualizationServer
     {
                 /// <summary>
         /// GraphVis constructor

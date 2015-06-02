@@ -9,7 +9,7 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 
-namespace WebApi
+namespace Fusion.VideoStreaming
 {   
     public class Upstart
     {
