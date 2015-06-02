@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Fusion.Input;
 using Fusion.Mathematics;
 using Fusion.VideoStreaming;
-using Minesweeper;
+using GraphVis;
 
 namespace Fusion.VideoStreaming
 {
@@ -14,11 +14,11 @@ namespace Fusion.VideoStreaming
     {
         static void Main(string[] args)
         {
-            using (var cs = new Instance<Minesweeper.Game>(args))
+            using (var cs = new Instance<GraphVis.Game>())
             {
-                // if(cs.prepare(Keys.F2, Vector2.Zero)){
-                cs.start(Keys.F2, Vector2.Zero);
-                // }
+                if(cs.prepare(Keys.F2, Vector2.Zero)){
+                    cs.start(Keys.F2, Vector2.Zero);
+                }
             }
         }
     }

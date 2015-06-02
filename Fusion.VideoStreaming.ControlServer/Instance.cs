@@ -16,16 +16,16 @@ namespace Fusion.VideoStreaming
         private volatile StreamingServer StreamingServer;
         private string[] Args;
 
-        public Instance(string[] args)
+        public Instance()
         {
             StreamingServer = new StreamingServer();
             GameServer = new T();
-            Args = args;
+            Args = new string[0];
         }
 
         public bool prepare(Keys key, Vector2 mousePosition)
         {
-            return DevCon.Prepare(GameServer, @"..\..\..\Content\Content.xml", "Content");
+            return DevCon.Prepare(GameServer, @"..\Content\Content.xml", "Content");
         }
         public void start(Keys key, Vector2 mousePosition)
         {

@@ -1,0 +1,5 @@
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\GraphVis.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\GraphVis.pdb
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\GraphVis\obj\Release\GraphVis.csprojResolveAssemblyReference.cache
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\GraphVis\obj\Release\GraphVis.dll
+C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\GraphVis\obj\Release\GraphVis.pdb

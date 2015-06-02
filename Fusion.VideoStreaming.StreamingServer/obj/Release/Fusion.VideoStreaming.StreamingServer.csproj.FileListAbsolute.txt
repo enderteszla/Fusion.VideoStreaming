@@ -1,5 +1,0 @@
-C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\Fusion.VideoStreaming.StreamingServer.dll.config
-C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\Fusion.VideoStreaming.StreamingServer.dll
-C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Lib\Fusion.VideoStreaming.StreamingServer.pdb
-C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Fusion.VideoStreaming.StreamingServer\obj\Release\Fusion.VideoStreaming.StreamingServer.dll
-C:\Users\bezbo_000\Documents\Visual Studio 2012\Projects\Fusion.VideoStreaming\Fusion.VideoStreaming.StreamingServer\obj\Release\Fusion.VideoStreaming.StreamingServer.pdb

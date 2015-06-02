@@ -71,7 +71,7 @@ namespace Fusion.VideoStreaming.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\VideoLAN\\VLC\\vlc.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\bezbo_000\\Downloads\\VLC\\vlc.exe")]
         public string vlcPath {
             get {
                 return ((string)(this["vlcPath"]));
@@ -80,7 +80,7 @@ namespace Fusion.VideoStreaming.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
         public int port {
             get {
                 return ((int)(this["port"]));

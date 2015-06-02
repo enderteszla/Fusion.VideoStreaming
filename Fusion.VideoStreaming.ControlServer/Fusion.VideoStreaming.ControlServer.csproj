@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DA5FF1B6-67A9-422F-B597-E247A8120131}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fusion.VideoStreaming</RootNamespace>
     <AssemblyName>Fusion.VideoStreaming.ControlServer</AssemblyName>
@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fusion, Version=0.9.1.113, Culture=neutral, processorArchitecture=AMD64">
@@ -79,9 +82,9 @@
       <Project>{5e2b0e03-3faa-4add-aec4-361cc1b1ac44}</Project>
       <Name>Fusion.VideoStreaming.StreamingServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Minesweeper\Minesweeper.csproj">
-      <Project>{15c1d397-d459-45f1-b97b-4dda606c1251}</Project>
-      <Name>Minesweeper</Name>
+    <ProjectReference Include="..\GraphVis\GraphVis.csproj">
+      <Project>{ef7c2f3b-f46f-4823-810f-c36dcf857326}</Project>
+      <Name>GraphVis</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
