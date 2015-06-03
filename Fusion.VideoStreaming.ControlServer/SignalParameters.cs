@@ -9,7 +9,7 @@ namespace Fusion.VideoStreaming
     public class SignalParameters
     {
         public int InstanceID { get; set; }
-        public string Key { get; set; }
+        public int Key { get; set; }
         public float MouseX { get; set; }
         public float MouseY { get; set; }
     }

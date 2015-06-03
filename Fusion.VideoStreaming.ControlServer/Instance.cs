@@ -33,25 +33,23 @@ namespace Fusion.VideoStreaming
 
         public void Start()
         {
-            // StreamingThread = new Thread(StreamingServer.Start);
-            // StreamingThread.Start();
             VisualizationServer.Run(new string[0]);
         }
-        public void KeyUp(string KeyCode,float MouseX,float MouseY)
+        public void KeyUp(int Key,float MouseX,float MouseY)
         {
-            Keys Key;
-            if (Enum.TryParse<Keys>(KeyCode, out Key))
+            try
             {
-                VisualizationServer.keyUp(Key, new Vector2(MouseX, MouseY));
+                VisualizationServer.KeyUp((Keys)Key, new Vector2(MouseX, MouseY));
             }
+            catch { }
         }
-        public void KeyDown(string KeyCode,float MouseX,float MouseY)
+        public void KeyDown(int Key,float MouseX,float MouseY)
         {
-            Keys Key;
-            if (Enum.TryParse<Keys>(KeyCode, out Key))
+            try
             {
-                VisualizationServer.keyDown(Key, new Vector2(MouseX, MouseY));
+                VisualizationServer.KeyDown((Keys)Key, new Vector2(MouseX, MouseY));
             }
+            catch { }
         }
         public void Stop()
         {

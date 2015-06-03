@@ -26,14 +26,56 @@ namespace Fusion.VideoStreaming
             Instance Instance = ControlServer.GetInstance(id);
             Instance.Init();
 
+            return Request.CreateResponse<Response>(new Response { Endpoint = Endpoint(request), InstanceID = id });
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Start([FromUri] SignalParameters parameters)
+        {
+            // ... Start GameServer
+            ControlServer.GetInstance(parameters.InstanceID).Start();
+
+            return Request.CreateResponse<object>(new object());
+        }
+
+        [HttpPost]
+        public HttpResponseMessage KeyUp([FromUri] SignalParameters parameters)
+        {
+            // ... Handle signal
+            ControlServer.GetInstance(parameters.InstanceID).KeyUp(parameters.Key,parameters.MouseX,parameters.MouseY);
+
+            return Request.CreateResponse<object>(new object());
+        }
+
+        [HttpPost]
+        public HttpResponseMessage KeyDown([FromUri] SignalParameters parameters)
+        {
+            // ... Handle signal
+            ControlServer.GetInstance(parameters.InstanceID).KeyDown(parameters.Key, parameters.MouseX, parameters.MouseY);
+
+            return Request.CreateResponse<object>(new object());
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Stop([FromUri] SignalParameters parameters)
+        {
+            // ... Stop StreamingServer, stop GameServer
+            ControlServer.GetInstance(parameters.InstanceID).Stop();
+
+            return Request.CreateResponse<object>(new object());
+        }
+
+        private string Endpoint(HttpRequestMessage request) {
             string RemoteIP = (string)((OwinContext)request.Properties["MS_OwinContext"]).Request.RemoteIpAddress;
             string IP;
             string Port;
-            if ((new HashSet<string> { "192.168.0.100", "192.168.255.255" }).Contains(RemoteIP)) {
+
+            if (IsLocalIP(RemoteIP))
+            {
                 IP = "192.168.14.1";
                 Port = "9001";
             }
-            else if (RemoteIP == "127.0.0.1")
+            else if (IPAddress.IsLoopback(IPAddress.Parse(RemoteIP)))
             {
                 IP = "127.0.0.1";
                 Port = "9001";
@@ -43,49 +85,38 @@ namespace Fusion.VideoStreaming
                 IP = "194.85.163.237";
                 Port = "19001";
             }
+
             string FileName = "webcam.ogg";
-
-            return Request.CreateResponse<Response>(new Response { Endpoint = String.Format("http://{0}:{1}/{2}", IP, Port, FileName), InstanceID = id });
+            return String.Format("http://{0}:{1}/{2}", IP, Port, FileName);
         }
 
-        // [HttpPost]
-        [HttpGet]
-        public HttpResponseMessage Start([FromUri] SignalParameters parameters)
-        {
-            // ... Start GameServer
-            ControlServer.GetInstance(parameters.InstanceID).Start();
-
-            return Request.CreateResponse<object>(new object());
+        private bool IsLocalIP(string IP){
+            try
+            {
+                foreach (IPAddress HostIP in Dns.GetHostAddresses(IP))
+                {
+                    foreach (IPAddress LocalIP in Dns.GetHostAddresses(Dns.GetHostName()))
+                    {
+                        if (AreInTheSameNetwork(HostIP,"255.255.0.0",LocalIP)) return true;
+                    }
+                }
+            }
+            catch { }
+            return false;
         }
 
-        // [HttpPost]
-        [HttpGet]
-        public HttpResponseMessage KeyUp([FromUri] SignalParameters parameters)
+        private bool AreInTheSameNetwork(IPAddress IP0, string SubNet, IPAddress IP1)
         {
-            // ... Handle signal
-            ControlServer.GetInstance(parameters.InstanceID).KeyUp(parameters.Key,parameters.MouseX,parameters.MouseY);
-
-            return Request.CreateResponse<object>(new object());
-        }
-
-        // [HttpPost]
-        [HttpGet]
-        public HttpResponseMessage KeyDown([FromUri] SignalParameters parameters)
-        {
-            // ... Handle signal
-            ControlServer.GetInstance(parameters.InstanceID).KeyDown(parameters.Key, parameters.MouseX, parameters.MouseY);
-
-            return Request.CreateResponse<object>(new object());
-        }
-
-        // [HttpPost]
-        [HttpGet]
-        public HttpResponseMessage Stop([FromUri] SignalParameters parameters)
-        {
-            // ... Stop StreamingServer, stop GameServer
-            ControlServer.GetInstance(parameters.InstanceID).Stop();
-
-            return Request.CreateResponse<object>(new object());
+            int SubNetInt = BitConverter.ToInt32(IPAddress.Parse(SubNet).GetAddressBytes(), 0);
+            int IP0Int = BitConverter.ToInt32(IP0.GetAddressBytes(), 0);
+            int IP1Int = BitConverter.ToInt32(IP1.GetAddressBytes(), 0);
+            int networkPortionofFirstIP = IP0Int & SubNetInt;
+            int networkPortionofSecondIP = IP1Int & SubNetInt;
+            if ((IP0Int & SubNetInt) == (IP1Int & SubNetInt))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

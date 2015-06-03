@@ -16,6 +16,7 @@ namespace GraphVis
 {
 	class OrbitCamera : Camera
 	{
+        GameTime GameTime;
 
 		float latitude;
 		float longitude;
@@ -67,7 +68,7 @@ namespace GraphVis
 			lonVelocity		= 0.005f;
 			upDownVelocity	= 1;
 
-			
+            Game.InputDevice.KeyDown += InputDevice_KeyDown;
 		}
 
 
@@ -81,37 +82,12 @@ namespace GraphVis
 			angularVelocity	= 0.25f;
 			upDownVelocity = 0.7f;
 
-			if ( Game.InputDevice.IsKeyDown( Keys.LeftShift ) ) {
-				angularVelocity *= 3;
-				upDownVelocity	*= 3;
-			}
+			
 
 			latVelocity = angularVelocity;
 			lonVelocity = angularVelocity;
 
-			if ( Game.InputDevice.IsKeyDown( Keys.W ) ) {
-				latitude += latitude > 85 ? 0 : latVelocity * gameTime.Elapsed.Milliseconds;
-				
-			}
-			if ( Game.InputDevice.IsKeyDown( Keys.S ) ) {
-				latitude -= latitude < -85 ? 0 : latVelocity * gameTime.Elapsed.Milliseconds;
-			}
-			if ( Game.InputDevice.IsKeyDown( Keys.A ) ) {
-				longitude -= lonVelocity * gameTime.Elapsed.Milliseconds;
-			}
-			if ( Game.InputDevice.IsKeyDown( Keys.D ) ) {
-				longitude += lonVelocity * gameTime.Elapsed.Milliseconds;
-			}
-
-			if ( Game.InputDevice.IsKeyDown( Keys.Space ) ) {
-				altitude += upDownVelocity * gameTime.Elapsed.Milliseconds / 3;
-			}
-
-			if ( Game.InputDevice.IsKeyDown( Keys.C ) ) {
-				altitude -= upDownVelocity * gameTime.Elapsed.Milliseconds / 3;
-			}
-
-			if ( altitude < 0.1f ) {
+            if ( altitude < 0.1f ) {
 				altitude = 0.1f;
 			}
 
@@ -130,7 +106,9 @@ namespace GraphVis
 			//ds.Add( "Altitude = " + altitude + " m" );
 			//ds.Add( "Longitude = " + longitude );
 			//ds.Add( "Latitude = " + latitude );
-			
+
+            GameTime = gameTime;
+
 			base.Update(gameTime);
 		}
 
@@ -146,7 +124,41 @@ namespace GraphVis
 			return new Vector3( X, Y, Z );
 		}
 
+        void InputDevice_KeyDown(object sender, Fusion.Input.InputDevice.KeyEventArgs e)
+        {
+            if (e.Key == Keys.LeftShift)
+            {
+                angularVelocity *= 3;
+                upDownVelocity *= 3;
+            }
 
+            if (e.Key == Keys.W)
+            {
+                latitude += latitude > 85 ? 0 : latVelocity * GameTime.Elapsed.Milliseconds;
 
+            }
+            if (e.Key == Keys.S)
+            {
+                latitude -= latitude < -85 ? 0 : latVelocity * GameTime.Elapsed.Milliseconds;
+            }
+            if (e.Key == Keys.A)
+            {
+                longitude -= lonVelocity * GameTime.Elapsed.Milliseconds;
+            }
+            if (e.Key == Keys.D)
+            {
+                longitude += lonVelocity * GameTime.Elapsed.Milliseconds;
+            }
+
+            if (e.Key == Keys.Space)
+            {
+                altitude += upDownVelocity * GameTime.Elapsed.Milliseconds / 3;
+            }
+
+            if (e.Key == Keys.C)
+            {
+                altitude -= upDownVelocity * GameTime.Elapsed.Milliseconds / 3;
+            }
+        }
 	}
 }

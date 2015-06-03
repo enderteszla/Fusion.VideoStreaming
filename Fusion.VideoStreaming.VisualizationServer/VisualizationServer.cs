@@ -66,21 +66,23 @@ namespace Fusion.VideoStreaming
 			}
 		}
 
-		public void keyUp(Keys key, Vector2 mousePosition)
+		public void KeyUp(Keys Key, Vector2 MousePosition)
 		{
-			InputDevice.RemoveVirtuallyPressedKey(key);
-			if ((int)mousePosition.X != -1)
+			InputDevice.RemoveVirtuallyPressedKey(Key);
+            Console.WriteLine("Key {0} Up",Key);
+			if ((int)MousePosition.X != -1)
 			{
-				InputDevice.GlobalMouseOffset = mousePosition;
+				InputDevice.GlobalMouseOffset = MousePosition;
 			}
 		}
 
-		public void keyDown(Keys key, Vector2 mousePosition)
+		public void KeyDown(Keys Key, Vector2 MousePosition)
 		{
-			InputDevice.AddVirtuallyPressedKey(key);
-			if ((int)mousePosition.X != -1)
+			InputDevice.AddVirtuallyPressedKey(Key);
+            Console.WriteLine("Key {0} Down", Key);
+			if ((int)MousePosition.X != -1)
 			{
-				InputDevice.GlobalMouseOffset = mousePosition;
+				InputDevice.GlobalMouseOffset = MousePosition;
 			}
 		}
 

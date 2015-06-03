@@ -1110,7 +1110,8 @@ namespace GraphVis
 
         void InputDevice_KeyDown(object sender, Fusion.Input.InputDevice.KeyEventArgs e)
         {
-			if (Game.InputDevice.IsKeyDown(Keys.LeftButton))
+			// if (e.Key == Keys.LeftButton)
+            if (e.Key == Keys.I)
 			{
 				Console.WriteLine("LEFT BUTTON");
 
@@ -1150,25 +1151,25 @@ namespace GraphVis
 
 			}
 
-            if (Game.InputDevice.IsKeyDown(Keys.Q))
+            if (e.Key == Keys.Q)
             {
                 Pause();
             }
 			
-			if (Game.InputDevice.IsKeyDown(Keys.B))
+			if (e.Key == Keys.B)
             {
 				changelayout();
 				Console.WriteLine("B");
 				Pause();
             }
 
-			if (Game.InputDevice.IsKeyDown(Keys.V))
+			if (e.Key == Keys.V)
 			{
 				StopDrawindLinks();
 				Console.WriteLine("V");
 			}
 
-			if (Game.InputDevice.IsKeyDown(Keys.M))
+			if (e.Key == Keys.M)
 			{
 				drawPlot(1);
 			}

@@ -35,7 +35,7 @@ namespace Fusion.VideoStreaming
             HttpConfiguration httpConfiguration = new HttpConfiguration();
             httpConfiguration.Routes.MapHttpRoute(
                 name: "Signal",
-                routeTemplate: "signal/{action}/{InstanceID}/{Key}/{MouseX}/{MouseY}",
+                routeTemplate: "Signal/{Action}/{InstanceID}/{Key}/{MouseX}/{MouseY}",
                 defaults: new { controller = "Signal", InstanceID = RouteParameter.Optional, Key = RouteParameter.Optional, MouseX = RouteParameter.Optional, MouseY = RouteParameter.Optional }
                 );
             httpConfiguration.Formatters.Remove(httpConfiguration.Formatters.XmlFormatter);

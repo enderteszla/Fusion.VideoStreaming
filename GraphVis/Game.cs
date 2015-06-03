@@ -154,7 +154,7 @@ namespace GraphVis
             }
 
 
-            if (InputDevice.IsKeyDown(Keys.K))
+            if (e.Key == Keys.K)
             {
                 if (simulationSpeed < 100)
                 {
@@ -164,13 +164,31 @@ namespace GraphVis
                 iterationTimer = 0;
             }
 
-            if (InputDevice.IsKeyDown(Keys.L))
+            if (e.Key == Keys.L)
             {
                 if (simulationSpeed > 10)
                 {
                     simulationSpeed = simulationSpeed - 5;
                 }
 
+                iterationTimer = 0;
+            }
+
+            // if (e.Key == Keys.I)
+            if (e.Key == Keys.LeftButton)
+            {
+                GetService<ParticleSystem>().AddMaxParticles();
+                iterationTimer = simulationSpeed - 10;
+                startSimulation = true;
+            }
+
+            if (e.Key == Keys.Q)
+            {
+                iterationTimer = 0;
+            }
+
+            if (e.Key == Keys.B)
+            {
                 iterationTimer = 0;
             }
 
@@ -226,26 +244,7 @@ namespace GraphVis
 				iterationCounter = iterationCounter + 1;
 
 			}
-
-
-            if (InputDevice.IsKeyDown(Keys.I))
-            {
-                partSys.AddMaxParticles();
-				iterationTimer = simulationSpeed - 10;
-                startSimulation = true;
-            }
-
-			
-
-            if (InputDevice.IsKeyDown(Keys.Q))
-            {
-                iterationTimer = 0;
-            }
-
-			if (InputDevice.IsKeyDown(Keys.B))
-			{
-				iterationTimer = 0;
-			}
+           	
 
             base.Update(gameTime);
 
