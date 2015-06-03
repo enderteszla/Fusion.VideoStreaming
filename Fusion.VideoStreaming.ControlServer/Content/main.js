@@ -83,8 +83,8 @@ $.fn.attachEventHandler = function (settings) {
 	$(window)
 		.on('keyup', Handler.onKeyUp.bind(Handler))
 		.on('keydown', Handler.onKeyDown.bind(Handler))
-        .on('unload', Handler.onKeyDown.bind(Handler))
-        .on('beforeunload', Handler.onKeyDown.bind(Handler));
+        .on('unload', Handler.onUnload.bind(Handler))
+        .on('beforeunload', Handler.onUnload.bind(Handler));
 	return this;
 };
 

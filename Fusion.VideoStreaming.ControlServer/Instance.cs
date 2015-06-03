@@ -13,8 +13,9 @@ namespace Fusion.VideoStreaming
 {
     public class Instance : IDisposable
     {
-        private volatile dynamic VisualizationServer;
-        private volatile StreamingServer StreamingServer;
+        private dynamic VisualizationServer;
+        private StreamingServer StreamingServer;
+        private DateTime StreamingStartInstance;
 
         public Instance(Type VisualizatorName)
         {
@@ -28,11 +29,12 @@ namespace Fusion.VideoStreaming
         }
 
         public void Init() {
-            StreamingServer.Start();
+            StreamingStartInstance = StreamingServer.Start();
         }
 
         public void Start()
         {
+            VisualizationServer.SetStartInstance(StreamingStartInstance);
             VisualizationServer.Run(new string[0]);
         }
         public void KeyUp(int Key,float MouseX,float MouseY)
@@ -42,6 +44,9 @@ namespace Fusion.VideoStreaming
                 VisualizationServer.KeyUp((Keys)Key, new Vector2(MouseX, MouseY));
             }
             catch { }
+            if ((Keys)Key == Keys.Escape) {
+                Dispose();
+            }
         }
         public void KeyDown(int Key,float MouseX,float MouseY)
         {
@@ -53,14 +58,7 @@ namespace Fusion.VideoStreaming
         }
         public void Stop()
         {
-            if (StreamingServer != null)
-            {
-                StreamingServer.Stop();
-            }
-            if (VisualizationServer != null)
-            {
-                VisualizationServer.Exit();
-            }
+            Dispose();
         }
 
         /*public void fire(GameServerEventType Type, String Key, Vector2 coords = ) {
@@ -76,7 +74,7 @@ namespace Fusion.VideoStreaming
             Dispose(true);
             if (VisualizationServer != null)
             {
-                VisualizationServer.Dispose();
+                VisualizationServer.Exit();
             }
             if (StreamingServer != null)
             {
