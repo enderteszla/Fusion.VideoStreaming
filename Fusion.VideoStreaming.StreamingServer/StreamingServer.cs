@@ -124,5 +124,5 @@ namespace Fusion.VideoStreaming
 
             Bitmap.Save(DestinationPath);
         }
-	}
+    }
 }

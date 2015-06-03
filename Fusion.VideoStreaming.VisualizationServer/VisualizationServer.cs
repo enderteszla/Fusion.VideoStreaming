@@ -26,9 +26,8 @@ namespace Fusion.VideoStreaming
 			Wheel = new Wheel(Properties.Settings.Default.wheelLength);
 		}
 
-        public VisualizationServer SetStartInstance(DateTime Instance) {
+        public void SetStartInstance(DateTime Instance) {
             Wheel.Set((int)((DateTime.Now.Subtract(Instance).Ticks / Properties.Settings.Default.snapshotPeriod.Ticks) % Properties.Settings.Default.wheelLength));
-            return this;
         }
 
         private void backBufferToBitmap(out Bitmap bitmap)

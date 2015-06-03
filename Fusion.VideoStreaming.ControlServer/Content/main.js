@@ -49,12 +49,6 @@ EventHandler.prototype.onMouseUp = function (event) {
     }
 };
 
-/* EventHandler.prototype.onMouseMove = function (event) {
-    if (this.State.Within && (this.State.Left || this.State.Right)) {
-        // ...
-    }
-}; */
-
 EventHandler.prototype.onUnload = function (event) {
     this.report('Stop');
 };
@@ -82,7 +76,6 @@ EventHandler.prototype.report = function (EventType, Key) {
 $.fn.attachEventHandler = function (settings) {
 	var Handler = new EventHandler(settings);
 	this.on('contextmenu', Handler.onContextMenu.bind(Handler))
-//		.on('mousemove', Handler.onMouseMove.bind(Handler))
 		.on('mouseup', Handler.onMouseUp.bind(Handler))
 		.on('mousedown', Handler.onMouseDown.bind(Handler))
         .on('mouseenter', Handler.onMouseEnter.bind(Handler))
@@ -90,8 +83,8 @@ $.fn.attachEventHandler = function (settings) {
 	$(window)
 		.on('keyup', Handler.onKeyUp.bind(Handler))
 		.on('keydown', Handler.onKeyDown.bind(Handler))
-        .on('beforeunload', Handler.onUnload.bind(Handler))
-        .on('unload', Handler.onUnload.bind(Handler));
+        .on('unload', Handler.onKeyDown.bind(Handler))
+        .on('beforeunload', Handler.onKeyDown.bind(Handler));
 	return this;
 };
 
@@ -99,11 +92,11 @@ jQuery(function () {
     $('#PlayButton').on('click', function () {
         var Time = new Date();
         $.post('/Signal/prepare', {}, function (Response) {
-            // $('<video height="600" width="800" autoplay controls="true" />').append('<source src="' + Response.Endpoint + '" type="video/ogg">').replaceAll($('#PlayButton')).on('loadstart', function () {
             $('<video height="600" width="800" autoplay />').append('<source src="' + Response.Endpoint + '" type="video/ogg; codecs = theora, vorbis" />').replaceAll($('#PlayButton')).on('canplay', function () {
-                var video = $(this).get(0);
-                // video.play();
-                console.log(video.currentTime = (new Date() - Time) / 1000);
+                var video = $(this).off('canplay').get(0),
+                    cTime = (new Date() - Time) / 1000;
+                console.log(cTime);
+                video.currentTime = cTime;
                 $.post('/Signal/start/' + Response.InstanceID);
             }).attachEventHandler(Response.InstanceID);
         }, 'json');
