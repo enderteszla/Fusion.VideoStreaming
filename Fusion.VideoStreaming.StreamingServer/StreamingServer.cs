@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -50,17 +53,18 @@ namespace Fusion.VideoStreaming
 			}
 		}
 
-		public void Start()
+		public DateTime Start()
 		{
 			// ... Generate necessary number of empty images.
             using (var Wheel = new Wheel(Properties.Settings.Default.wheelLength))
             {
                 for (var i = 0; i < Properties.Settings.Default.wheelLength; i++)
                 {
-                    if (!File.Exists(Wheel.Current()))
+                    if (File.Exists(Wheel.Current()))
                     {
-                        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), @"..\Content\source.png"), Wheel.Current());
+                        File.Delete(Wheel.Current());
                     }
+                    WriteTextOverImage(Path.Combine(Directory.GetCurrentDirectory(), @"..\Content\source.png"), Wheel.Current(), String.Format("Loading... Stub frame #{0}", i.ToString()));
                     Wheel.Next();
                 }
             }
@@ -76,6 +80,7 @@ namespace Fusion.VideoStreaming
 			}
 			ProcessStartInfo controlProcessInfo = new ProcessStartInfo("cmd.exe", String.Format("/C {0}", String.Concat(batchFileDir, batchFileName)));
 			controlProcess = Process.Start(controlProcessInfo);
+            return DateTime.Now;
 		}
 
 		public void Stop()
@@ -102,5 +107,22 @@ namespace Fusion.VideoStreaming
 			{
 			}
 		}
+
+        private void WriteTextOverImage(string SourcePath, string DestinationPath, string Text)
+        {
+            PointF Location = new PointF(10f, 10f);
+
+            Bitmap Bitmap = (Bitmap)Image.FromFile(SourcePath);
+
+            using (Graphics Graphics = Graphics.FromImage(Bitmap))
+            {
+                using (Font arialFont = new Font("Arial", 10))
+                {
+                    Graphics.DrawString(Text, arialFont, Brushes.Blue, Location);
+                }
+            }
+
+            Bitmap.Save(DestinationPath);
+        }
 	}
 }

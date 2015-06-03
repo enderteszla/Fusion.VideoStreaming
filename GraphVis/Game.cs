@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ using Fusion.Input;
 using Fusion.Content;
 using Fusion.Development;
 using Fusion.VideoStreaming;
-using System.IO;
 
 namespace GraphVis
 {

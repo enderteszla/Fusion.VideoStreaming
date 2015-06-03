@@ -31,10 +31,14 @@ namespace Fusion.VideoStreaming
         }
 
         public static void CleanUp() {
-            foreach(var Instance in InstanceList){
-                Instance.Dispose();
+            if (InstanceList != null)
+            {
+                foreach (var Instance in InstanceList)
+                {
+                    Instance.Dispose();
+                }
+                InstanceList = null;
             }
-            InstanceList = null;
         }
     }
 }

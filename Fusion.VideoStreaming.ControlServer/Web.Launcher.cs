@@ -19,6 +19,7 @@ namespace Fusion.VideoStreaming
             {
                 Console.WriteLine("Web server on http://194.85.163.237:19000 started.");
                 Console.ReadLine();
+                ControlServer.CleanUp();
                 Console.WriteLine("Web server on http://194.85.163.237:19000 stopped.");
             }
         }

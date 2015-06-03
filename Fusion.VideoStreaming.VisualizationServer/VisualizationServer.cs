@@ -16,15 +16,20 @@ namespace Fusion.VideoStreaming
 	{
 		private DateTime nextSnapshotTime;
 		private TimeSpan snapshotPeriod;
-		private Wheel wheel;
+		private Wheel Wheel;
 
 		public VisualizationServer()
 			: base()
 		{
 			nextSnapshotTime = DateTime.Now;
 			snapshotPeriod = Properties.Settings.Default.snapshotPeriod;
-			wheel = new Wheel(Properties.Settings.Default.wheelLength);
+			Wheel = new Wheel(Properties.Settings.Default.wheelLength);
 		}
+
+        public VisualizationServer SetStartInstance(DateTime Instance) {
+            Wheel.Set((int)((DateTime.Now.Subtract(Instance).Ticks / Properties.Settings.Default.snapshotPeriod.Ticks) % Properties.Settings.Default.wheelLength));
+            return this;
+        }
 
         private void backBufferToBitmap(out Bitmap bitmap)
 		{
@@ -59,17 +64,16 @@ namespace Fusion.VideoStreaming
 			{
 				Bitmap bmp;
 				backBufferToBitmap(out bmp);
-				bmp.Save(wheel.Current(), ImageFormat.Png);
+				bmp.Save(Wheel.Current(), ImageFormat.Png);
 				bmp.Dispose();
 				nextSnapshotTime = nextSnapshotTime.Add(snapshotPeriod);
-				wheel.Next();
+				Wheel.Next();
 			}
 		}
 
 		public void KeyUp(Keys Key, Vector2 MousePosition)
 		{
 			InputDevice.RemoveVirtuallyPressedKey(Key);
-            Console.WriteLine("Key {0} Up",Key);
 			if ((int)MousePosition.X != -1)
 			{
 				InputDevice.GlobalMouseOffset = MousePosition;
@@ -79,7 +83,6 @@ namespace Fusion.VideoStreaming
 		public void KeyDown(Keys Key, Vector2 MousePosition)
 		{
 			InputDevice.AddVirtuallyPressedKey(Key);
-            Console.WriteLine("Key {0} Down", Key);
 			if ((int)MousePosition.X != -1)
 			{
 				InputDevice.GlobalMouseOffset = MousePosition;

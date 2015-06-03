@@ -10,17 +10,21 @@ namespace Fusion.VideoStreaming
     {
         private String[] FileNames;
         private int c;
-        public Wheel(int number)
+
+        public Wheel(int Number,int StartIndex = 0)
         {
-            FileNames = new String[number];
-            String directory = Properties.Settings.Default.fakeImageDir;
-            String name = Properties.Settings.Default.fakeImageName;
-            String extension = Properties.Settings.Default.fakeImageExtension;
+            FileNames = new String[Number];
+            String Directory = Properties.Settings.Default.fakeImageDir;
+            String Name = Properties.Settings.Default.fakeImageName;
+            String Extension = Properties.Settings.Default.fakeImageExtension;
             for (var i = 0; i < FileNames.Length; i++)
             {
-                FileNames[i] = String.Format(@"{0}{1}{2,3:000}.{3}", directory, name, i, extension);
+                FileNames[i] = String.Format(@"{0}{1}{2,3:000}.{3}", Directory, Name, i, Extension);
             }
-            c = 0;
+            c = StartIndex;
+        }
+        public void Set(int Index) {
+            c = Index;
         }
         public Wheel Next()
         {

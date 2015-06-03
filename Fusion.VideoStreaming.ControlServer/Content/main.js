@@ -55,8 +55,28 @@ EventHandler.prototype.onMouseUp = function (event) {
     }
 }; */
 
+EventHandler.prototype.onUnload = function (event) {
+    this.report('Stop');
+};
+
 EventHandler.prototype.report = function (EventType, Key) {
-    $.post('/Signal/' + EventType + '/' + this.InstanceID + '/' + Key + '/' + this.CursorPosition.X + '/' + this.CursorPosition.Y);
+    if (EventType == 'Stop') {
+        $.ajax({
+            async: false,
+            dataType: 'json',
+            method: 'POST',
+            success: function (Response) {
+                return true;
+            },
+            url: '/Signal/' + EventType + '/' + this.InstanceID
+        });
+    } else {
+        $.post('/Signal/' + EventType + '/' + this.InstanceID + '/' + Key + '/' + this.CursorPosition.X + '/' + this.CursorPosition.Y, {}, function (Response) {
+            if(EventType == 'KeyUp' && Key == 27){
+                document.location.reload();
+            }
+        }, 'json');
+    }
 };
 
 $.fn.attachEventHandler = function (settings) {
@@ -67,18 +87,23 @@ $.fn.attachEventHandler = function (settings) {
 		.on('mousedown', Handler.onMouseDown.bind(Handler))
         .on('mouseenter', Handler.onMouseEnter.bind(Handler))
         .on('mouseleave', Handler.onMouseLeave.bind(Handler));
-	$(document)
+	$(window)
 		.on('keyup', Handler.onKeyUp.bind(Handler))
-		.on('keydown', Handler.onKeyDown.bind(Handler));
+		.on('keydown', Handler.onKeyDown.bind(Handler))
+        .on('beforeunload', Handler.onUnload.bind(Handler))
+        .on('unload', Handler.onUnload.bind(Handler));
 	return this;
 };
 
 jQuery(function () {
     $('#PlayButton').on('click', function () {
+        var Time = new Date();
         $.post('/Signal/prepare', {}, function (Response) {
             // $('<video height="600" width="800" autoplay controls="true" />').append('<source src="' + Response.Endpoint + '" type="video/ogg">').replaceAll($('#PlayButton')).on('loadstart', function () {
-            $('<video height="600" width="800" autoplay />').append('<source src="' + Response.Endpoint + '" type="video/ogg">').replaceAll($('#PlayButton')).on('loadstart', function () {
-                $(this).get(0).play();
+            $('<video height="600" width="800" autoplay />').append('<source src="' + Response.Endpoint + '" type="video/ogg; codecs = theora, vorbis" />').replaceAll($('#PlayButton')).on('canplay', function () {
+                var video = $(this).get(0);
+                // video.play();
+                console.log(video.currentTime = (new Date() - Time) / 1000);
                 $.post('/Signal/start/' + Response.InstanceID);
             }).attachEventHandler(Response.InstanceID);
         }, 'json');
