@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ParticleConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Max_mass>0.5</Max_mass>
+  <Min_mass>0.5</Min_mass>
+  <IType>RUNGE_KUTTA</IType>
+  <Rotation>2.6</Rotation>
+  <BankNodes>100</BankNodes>
+  <CustomerNodes>3000</CustomerNodes>
+</ParticleConfig>

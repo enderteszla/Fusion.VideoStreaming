@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DebugStringsConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SuppressDebugString>false</SuppressDebugString>
+  <BackgroundColor>
+    <R>0</R>
+    <G>0</G>
+    <B>0</B>
+    <A>0</A>
+  </BackgroundColor>
+</DebugStringsConfig>

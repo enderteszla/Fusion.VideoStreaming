@@ -1,0 +1,30 @@
+﻿* {
+    display: block;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    position: relative;
+}
+
+#VideoWrapper {
+    display: inline-block;
+    height: 600px;
+    width: 800px;
+}
+
+#PlayButton {
+    background: url('/PlayButton.png') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0.75;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#PlayButton:hover {
+    opacity: 1;
+}

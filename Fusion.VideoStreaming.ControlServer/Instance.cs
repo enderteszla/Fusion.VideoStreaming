@@ -14,6 +14,7 @@ namespace Fusion.VideoStreaming
     public class Instance : IDisposable
     {
         private dynamic VisualizationServer;
+        private Type VisualizatorName;
         private StreamingServer StreamingServer;
         private DateTime StreamingStartInstance;
 
@@ -21,11 +22,12 @@ namespace Fusion.VideoStreaming
         {
             StreamingServer = new StreamingServer();
             VisualizationServer = Activator.CreateInstance(VisualizatorName);
+            this.VisualizatorName = VisualizatorName;
         }
 
         public bool Prepare()
         {
-            return DevCon.Prepare(VisualizationServer, @"..\Content\Content.xml", "Content");
+            return DevCon.Prepare(VisualizationServer, String.Format(@"..\Content\{0}\Content.xml", VisualizatorName.Namespace), "Content");
         }
 
         public void Init() {

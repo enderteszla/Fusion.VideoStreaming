@@ -26,7 +26,7 @@ namespace Fusion.VideoStreaming
             RunWebApiConfiguration(appBuilder);
 
             // Or is it a static file request?
-            appBuilder.UseStaticFiles(new StaticFileOptions() { FileSystem = new PhysicalFileSystem(@"..\Content") });
+            appBuilder.UseStaticFiles(new StaticFileOptions() { FileSystem = new PhysicalFileSystem(@"..\Web") });
 
             // Or simply / ?
             appBuilder.UseIndexPage();

@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Lib\</OutputPath>
+    <OutputPath>..\Bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,7 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Fusion.VideoStreaming.WebLauncher</StartupObject>
+    <StartupObject>Fusion.VideoStreaming.DesktopLauncher</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fusion, Version=0.9.1.113, Culture=neutral, processorArchitecture=AMD64">
@@ -129,14 +129,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\index.html" />
-    <Content Include="Content\jquery-1.11.3.min.js" />
-    <Content Include="Content\main.js" />
-    <Content Include="Content\style.css" />
+    <Content Include="Web\index.html" />
+    <Content Include="Web\jquery-1.11.3.min.js" />
+    <Content Include="Web\main.js" />
+    <Content Include="Web\PlayButton.png" />
+    <Content Include="Web\style.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy "$(ProjectDir)Content" "$(ProjectDir)$(OutDir)..\Content\" /Y/D/E</PreBuildEvent>
+    <PreBuildEvent>xcopy "$(ProjectDir)Web" "$(ProjectDir)$(OutDir)..\Web\" /Y/D/E</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
