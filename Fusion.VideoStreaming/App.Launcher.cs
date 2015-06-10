@@ -14,8 +14,10 @@ namespace Fusion.VideoStreaming
     {
         static void Main(string[] args)
         {
-            Assembly.LoadFrom("GraphVis.dll");
-            int id = Facade.AddInstance("GraphVis.Game,GraphVis");
+            // Assembly.LoadFrom("GraphVis.dll");
+            // int id = Facade.AddInstance("GraphVis.Game,GraphVis");
+            Assembly.LoadFrom("Minesweeper.dll");
+            int id = Facade.AddInstance("Minesweeper.Game,Minesweeper");
             Instance Instance = Facade.GetInstance(id);
             if (Instance.Prepare())
             {

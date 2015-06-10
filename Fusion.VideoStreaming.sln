@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphVis", "GraphVis\GraphV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fusion.VideoStreaming", "Fusion.VideoStreaming\Fusion.VideoStreaming.csproj", "{94362294-FA90-4211-8A77-C343CF762315}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper\Minesweeper.csproj", "{15C1D397-D459-45F1-B97B-4DDA606C1251}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,16 @@ Global
 		{94362294-FA90-4211-8A77-C343CF762315}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{94362294-FA90-4211-8A77-C343CF762315}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{94362294-FA90-4211-8A77-C343CF762315}.Release|x64.ActiveCfg = Release|Any CPU
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Debug|x64.ActiveCfg = Debug|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Debug|x64.Build.0 = Debug|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Release|Any CPU.ActiveCfg = Release|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Release|Mixed Platforms.Build.0 = Release|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Release|x64.ActiveCfg = Release|x64
+		{15C1D397-D459-45F1-B97B-4DDA606C1251}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
