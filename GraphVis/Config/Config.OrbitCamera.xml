@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CameraConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <FreeCamEnabled>true</FreeCamEnabled>
+  <FreeCamFov>90</FreeCamFov>
+  <FreeCamZFar>5000</FreeCamZFar>
+  <FreeCamZNear>0.1</FreeCamZNear>
+  <FreeCamVelocity>10</FreeCamVelocity>
+  <FreeCamSensitivity>0.1</FreeCamSensitivity>
+  <FreeCamInvertMouse>false</FreeCamInvertMouse>
+  <FreeCamMoveForward>W</FreeCamMoveForward>
+  <FreeCamMoveBackward>S</FreeCamMoveBackward>
+  <FreeCamMoveLeft>A</FreeCamMoveLeft>
+  <FreeCamMoveRight>D</FreeCamMoveRight>
+  <FreeCamMoveUp>Space</FreeCamMoveUp>
+  <FreeCamMoveDown>C</FreeCamMoveDown>
+  <FreeCamGamepadSensitivity>90</FreeCamGamepadSensitivity>
+  <FreeCamGamepadInvert>false</FreeCamGamepadInvert>
+  <FreeCamStereoSeparation>0.5</FreeCamStereoSeparation>
+  <FreeCamStereoConvergence>10</FreeCamStereoConvergence>
+</CameraConfig>

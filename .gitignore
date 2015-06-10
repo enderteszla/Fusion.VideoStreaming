@@ -1,5 +1,6 @@
-/Fusion.VideoStreaming/obj
-/Lib
-/Minesweeper/obj
-/Minesweeper/bin
-/Minesweeper/Content/Temp
+/*/obj/
+/Bin/
+/Config/
+/Content/
+/Fusion.VideoStreaming.v11.suo
+/Web/

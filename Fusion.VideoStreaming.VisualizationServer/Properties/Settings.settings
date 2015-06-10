@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Fusion.VideoStreaming.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ffmpegPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\bezbo_000\Downloads\ffmpeg-20150204-git-77f326d-win64-shared\bin\ffmpeg.exe</Value>
+    </Setting>
+    <Setting Name="fps" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="fakeImageDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\bezbo_000\Pictures\</Value>
+    </Setting>
+    <Setting Name="fakeImageName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">source</Value>
+    </Setting>
+    <Setting Name="fakeImageExtension" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">png</Value>
+    </Setting>
+    <Setting Name="vlcPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\bezbo_000\Downloads\VLC\vlc.exe</Value>
+    </Setting>
+    <Setting Name="port" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">9000</Value>
+    </Setting>
+    <Setting Name="fakeVideoName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">webcam</Value>
+    </Setting>
+    <Setting Name="fakeVideoExtension" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ogg</Value>
+    </Setting>
+    <Setting Name="batchFileDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\bezbo_000\Documents\</Value>
+    </Setting>
+    <Setting Name="batchFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">startStreaming.bat</Value>
+    </Setting>
+    <Setting Name="wheelLength" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="snapshotPeriod" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:00:00.2000000</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

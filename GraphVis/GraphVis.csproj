@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF7C2F3B-F46F-4823-810F-C36DCF857326}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GraphVis</RootNamespace>
+    <AssemblyName>GraphVis</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fusion">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FusionGameLib\Bin\Fusion.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Directories.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="OrbitCamera.cs" />
+    <Compile Include="ParticleSystem.cs" />
+    <Compile Include="PlotData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fusion.VideoStreaming.VisualizationServer\Fusion.VideoStreaming.VisualizationServer.csproj">
+      <Project>{127f5081-d795-49c7-9b43-e8704869bb0b}</Project>
+      <Name>Fusion.VideoStreaming.VisualizationServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Config.Camera.xml" />
+    <Content Include="Config\Config.DebugRender.xml" />
+    <Content Include="Config\Config.DebugStrings.xml" />
+    <Content Include="Config\Config.Directories.xml" />
+    <Content Include="Config\Config.GeoCamera.xml" />
+    <Content Include="Config\Config.OrbitCamera.xml" />
+    <Content Include="Config\Config.ParticleSystem.xml" />
+    <Content Include="Config\Config.SpriteBatch.xml" />
+    <Content Include="Content\111.png" />
+    <Content Include="Content\Content.xml" />
+    <Content Include="Content\legend.png" />
+    <Content Include="Content\legendbl.png" />
+    <Content Include="Content\legendGray.png" />
+    <Content Include="Content\Line.png" />
+    <Content Include="Content\new.png" />
+    <Content Include="Content\new2.png" />
+    <Content Include="Content\new3.png" />
+    <Content Include="Content\plotDot.png" />
+    <Content Include="Content\plotDotwhite.png" />
+    <Content Include="Content\shaders.hlsl" />
+    <Content Include="Content\smaller3png.png" />
+    <Content Include="Content\tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\arial.bmfc" />
+    <None Include="Content\Calibri.bmfc" />
+    <None Include="Content\calibriLarge.bmfc" />
+    <None Include="Content\calibrismall.bmfc" />
+    <None Include="Content\circle1.tga" />
+    <None Include="Content\particle.tga" />
+    <None Include="Content\perec.tga" />
+    <None Include="Content\segoe40.bmfc" />
+    <None Include="Content\segoe80.bmfc" />
+    <None Include="Content\smaller.tga" />
+    <None Include="Content\smaller2.tga" />
+    <None Include="Content\smaller3.tga" />
+    <None Include="Content\smaller4.tga" />
+    <None Include="Content\square.tga" />
+    <None Include="Content\tnr.bmfc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(ProjectDir)Content" "$(ProjectDir)$(OutDir)..\Content\$(ProjectName)\" /Y/D/E
+xcopy "$(ProjectDir)Config" "$(ProjectDir)$(OutDir)..\Config\$(ProjectName)\" /Y/D/E</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
