@@ -52,12 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fusion.VideoStreaming.VisualizationServer\Fusion.VideoStreaming.VisualizationServer.csproj">
-      <Project>{127f5081-d795-49c7-9b43-e8704869bb0b}</Project>
-      <Name>Fusion.VideoStreaming.VisualizationServer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Config\Config.Camera.xml" />
     <Content Include="Config\Config.DebugRender.xml" />
     <Content Include="Config\Config.DebugStrings.xml" />
@@ -97,6 +91,12 @@
     <None Include="Content\smaller4.tga" />
     <None Include="Content\square.tga" />
     <None Include="Content\tnr.bmfc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fusion.VideoStreaming\Fusion.VideoStreaming.csproj">
+      <Project>{94362294-fa90-4211-8a77-c343cf762315}</Project>
+      <Name>Fusion.VideoStreaming</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
