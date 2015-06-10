@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fusion.VideoStreaming
 {
-    public static class ControlServer
+    public static class Facade
     {
         public volatile static List<Instance> InstanceList;
         

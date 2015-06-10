@@ -15,14 +15,14 @@ namespace Fusion.VideoStreaming
         static void Main(string[] args)
         {
             Assembly.LoadFrom("GraphVis.dll");
-            int id = ControlServer.AddInstance("GraphVis.Game,GraphVis");
-            Instance Instance = ControlServer.GetInstance(id);
+            int id = Facade.AddInstance("GraphVis.Game,GraphVis");
+            Instance Instance = Facade.GetInstance(id);
             if (Instance.Prepare())
             {
                 Instance.Init();
                 Instance.Start();
                 Console.ReadLine();
-                ControlServer.CleanUp();
+                Facade.CleanUp();
             }
         }
     }

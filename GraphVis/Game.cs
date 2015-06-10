@@ -16,7 +16,7 @@ using Fusion.VideoStreaming;
 
 namespace GraphVis
 {
-    public class Game : VisualizationServer
+    public class Game : Visualisator
     {
                 /// <summary>
         /// GraphVis constructor

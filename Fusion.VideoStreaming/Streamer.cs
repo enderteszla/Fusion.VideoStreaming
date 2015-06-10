@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace Fusion.VideoStreaming
 {
-	public class StreamingServer : IDisposable
+	public class Streamer : IDisposable
 	{
 		private String ffmpegPath, frameRate, fakeImageDir, fakeImageName, fakeImageExtension, vlcPath, port, fakeVideoName, fakeVideoExtension, batchFileDir, batchFileName;
 		private Process controlProcess;
 
-		public StreamingServer(int frameRate = 0, int port = 0)
+		public Streamer(int frameRate = 0, int port = 0)
 		{
 			this.ffmpegPath = Properties.Settings.Default.ffmpegPath;
 			this.frameRate = (frameRate == 0) ? Properties.Settings.Default.fps.ToString() : frameRate.ToString();
@@ -97,7 +97,7 @@ namespace Fusion.VideoStreaming
 			GC.SuppressFinalize(this);
 		}
 
-		~StreamingServer() {
+		~Streamer() {
 			Dispose(false);
 		}
 

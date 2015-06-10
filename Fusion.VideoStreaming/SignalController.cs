@@ -22,8 +22,8 @@ namespace Fusion.VideoStreaming
         public HttpResponseMessage Prepare(HttpRequestMessage request)
         {
             // ... Start StreamingServer (empty images + start VideoStreaming)
-            int id = ControlServer.AddInstance("GraphVis.Game,GraphVis");
-            Instance Instance = ControlServer.GetInstance(id);
+            int id = Facade.AddInstance("GraphVis.Game,GraphVis");
+            Instance Instance = Facade.GetInstance(id);
             Instance.Init();
 
             return Request.CreateResponse<Response>(new Response { Endpoint = Endpoint(request), InstanceID = id });
@@ -33,7 +33,7 @@ namespace Fusion.VideoStreaming
         public HttpResponseMessage Start([FromUri] SignalParameters parameters)
         {
             // ... Start GameServer
-            ControlServer.GetInstance(parameters.InstanceID).Start();
+            Facade.GetInstance(parameters.InstanceID).Start();
 
             return Request.CreateResponse<object>(new object());
         }
@@ -42,7 +42,7 @@ namespace Fusion.VideoStreaming
         public HttpResponseMessage KeyUp([FromUri] SignalParameters parameters)
         {
             // ... Handle signal
-            ControlServer.GetInstance(parameters.InstanceID).KeyUp(parameters.Key,parameters.MouseX,parameters.MouseY);
+            Facade.GetInstance(parameters.InstanceID).KeyUp(parameters.Key,parameters.MouseX,parameters.MouseY);
 
             return Request.CreateResponse<object>(new object());
         }
@@ -51,7 +51,7 @@ namespace Fusion.VideoStreaming
         public HttpResponseMessage KeyDown([FromUri] SignalParameters parameters)
         {
             // ... Handle signal
-            ControlServer.GetInstance(parameters.InstanceID).KeyDown(parameters.Key, parameters.MouseX, parameters.MouseY);
+            Facade.GetInstance(parameters.InstanceID).KeyDown(parameters.Key, parameters.MouseX, parameters.MouseY);
 
             return Request.CreateResponse<object>(new object());
         }
@@ -60,7 +60,7 @@ namespace Fusion.VideoStreaming
         public HttpResponseMessage Stop([FromUri] SignalParameters parameters)
         {
             // ... Stop StreamingServer, stop GameServer
-            ControlServer.GetInstance(parameters.InstanceID).Stop();
+            Facade.GetInstance(parameters.InstanceID).Stop();
 
             return Request.CreateResponse<object>(new object());
         }

@@ -13,37 +13,37 @@ namespace Fusion.VideoStreaming
 {
     public class Instance : IDisposable
     {
-        private dynamic VisualizationServer;
-        private Type VisualizatorName;
-        private StreamingServer StreamingServer;
+        private dynamic Visualisator;
+        private Type VisualisatorName;
+        private Streamer Streamer;
         private DateTime StreamingStartInstance;
 
-        public Instance(Type VisualizatorName)
+        public Instance(Type VisualisatorName)
         {
-            StreamingServer = new StreamingServer();
-            VisualizationServer = Activator.CreateInstance(VisualizatorName);
-            this.VisualizatorName = VisualizatorName;
+            Streamer = new Streamer();
+            Visualisator = Activator.CreateInstance(VisualisatorName);
+            this.VisualisatorName = VisualisatorName;
         }
 
         public bool Prepare()
         {
-            return DevCon.Prepare(VisualizationServer, String.Format(@"..\Content\{0}\Content.xml", VisualizatorName.Namespace), "Content");
+            return DevCon.Prepare(Visualisator, String.Format(@"..\Content\{0}\Content.xml", VisualisatorName.Namespace), "Content");
         }
 
         public void Init() {
-            StreamingStartInstance = StreamingServer.Start();
+            StreamingStartInstance = Streamer.Start();
         }
 
         public void Start()
         {
-            VisualizationServer.SetStartInstance(StreamingStartInstance);
-            VisualizationServer.Run(new string[0]);
+            Visualisator.SetStartInstance(StreamingStartInstance);
+            Visualisator.Run(new string[0]);
         }
         public void KeyUp(int Key,float MouseX,float MouseY)
         {
             try
             {
-                VisualizationServer.KeyUp((Keys)Key, new Vector2(MouseX, MouseY));
+                Visualisator.KeyUp((Keys)Key, new Vector2(MouseX, MouseY));
             }
             catch { }
             if ((Keys)Key == Keys.Escape) {
@@ -54,7 +54,7 @@ namespace Fusion.VideoStreaming
         {
             try
             {
-                VisualizationServer.KeyDown((Keys)Key, new Vector2(MouseX, MouseY));
+                Visualisator.KeyDown((Keys)Key, new Vector2(MouseX, MouseY));
             }
             catch { }
         }
@@ -74,13 +74,13 @@ namespace Fusion.VideoStreaming
         public void Dispose()
         {
             Dispose(true);
-            if (VisualizationServer != null)
+            if (Visualisator != null)
             {
-                VisualizationServer.Exit();
+                Visualisator.Exit();
             }
-            if (StreamingServer != null)
+            if (Streamer != null)
             {
-                StreamingServer.Dispose();
+                Streamer.Dispose();
             }
             GC.SuppressFinalize(this);
         }

@@ -102,8 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppBuilderExtensions.cs" />
-    <Compile Include="ControlServer.cs" />
-    <Compile Include="Desktop.Launcher.cs" />
+    <Compile Include="Facade.cs" />
+    <Compile Include="App.Launcher.cs" />
     <Compile Include="IndexPage.cs" />
     <Compile Include="Inherited.cs" />
     <Compile Include="Instance.cs" />
@@ -115,22 +115,22 @@
     </Compile>
     <Compile Include="SignalController.cs" />
     <Compile Include="SignalParameters.cs" />
-    <Compile Include="StreamingServer.cs" />
+    <Compile Include="Streamer.cs" />
     <Compile Include="Upstart.cs" />
-    <Compile Include="VisualizationServer.cs" />
+    <Compile Include="Visualisator.cs" />
     <Compile Include="Web.Launcher.cs" />
     <Compile Include="Wheel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
+    <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="Packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="web.config" />
+    <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\source.png" />
